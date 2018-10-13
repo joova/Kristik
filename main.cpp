@@ -19,12 +19,6 @@
 #include <SFML/Graphics.hpp>
 #include "TileMap.hpp"
 
-
-// Here is a small helper for you! Have a look.
-#include "ResourcePath.hpp"
-
-
-
 int main(int, char const**)
 {
     // Create the main window
@@ -34,7 +28,7 @@ int main(int, char const**)
 
     // Set the Icon
     sf::Image icon;
-    if (!icon.loadFromFile(resourcePath() + "icon.png")) {
+    if (!icon.loadFromFile("icon.png")) {
         return EXIT_FAILURE;
     }
     window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
@@ -62,11 +56,11 @@ int main(int, char const**)
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     };
-    
+
     pola pola_sulam = putih;
-    
+
     TileMap tilemap;
-    if(!tilemap.load(resourcePath() + "tileset_cross.png", sf::Vector2u(32, 32), level, 25, 19))
+    if(!tilemap.load("tileset_cross.png", sf::Vector2u(32, 32), level, 25, 19))
         return -1;
 
     // Start the game loop
@@ -93,16 +87,16 @@ int main(int, char const**)
             } else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::B) {
                 pola_sulam = hitam;
             }
-            
+
             if (event.type == sf::Event::MouseButtonPressed)
             {
                 if (event.mouseButton.button == sf::Mouse::Left)
                 {
                     int x = event.mouseButton.x;
                     int y = event.mouseButton.y;
-                    
+
                     tilemap.update(sf::Vector2u(32, 32), level, x, y, 25, 19, pola_sulam);
-                    
+
                 }
             }
         }
@@ -112,7 +106,7 @@ int main(int, char const**)
 
         // Draw the tilemap
         window.draw(tilemap);
-        
+
         // Update the window
         window.display();
     }
