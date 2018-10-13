@@ -1,0 +1,30 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build kristik",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-o",
+                "kristik",
+                "-std=c++11",
+                "*.cpp",
+                "-I",
+                "/usr/local/include",
+                "-L", 
+                "/usr/local/lib/", 
+                "-lsfml-graphics", 
+                "-lsfml-window", 
+                "-lsfml-system"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

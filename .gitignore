@@ -2,3 +2,6 @@
 *.exe
 cb.bmp
 *.o
+kristik.dSYM/Contents/Info.plist
+kristik.dSYM/Contents/Resources/DWARF/kristik
+kristik
